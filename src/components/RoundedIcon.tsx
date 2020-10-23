@@ -17,12 +17,12 @@ const RoundedIcon = ({name, size, color, backgroundColor}: RoundedIconProps) => 
                     width={size} 
                     justifyContent="center"
                     alignItems="center"
-                    style={{ borderRadius: size/2 }}
+                    style={{ borderRadius: size / 2 }}
                     {...{ backgroundColor }}
                     >
                         <Text style={{width: iconSize, height: iconSize }} {...{ color }}>
 
-                        <Icon size={iconSize} style={{textAlign: "center"}} {...{ name }}/>
+                        <Icon size={iconSize} {...{ name }}/>
                         </Text>
                         </Box>
     );

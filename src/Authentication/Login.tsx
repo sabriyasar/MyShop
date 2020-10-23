@@ -9,6 +9,7 @@ import { Routes, StackNavigationProps } from "../components/Navigation";
 import TextInput from "../components/Form/TextInput";
 import Checkbox from "../components/Form/Checkbox";
 import Footer from "./components/Footer";
+import { BorderlessButton } from "react-native-gesture-handler";
 
 
 const LoginSchema = Yup.object().shape({
@@ -26,7 +27,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
     } = useFormik({                  
         validationSchema: LoginSchema,
         initialValues: { email: '', password: "", remember: true },
-        onSubmit: (values) => console.log(values),
+        onSubmit: navigation.navigate("Home"),
     });
 
     const password = useRef<typeof TextInput>(null);
@@ -78,14 +79,21 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                     onSubmitEditing={() => handleSubmit()}
                     secureTextEntry
                     />                     
-                    <Box flexDirection="row" justifyContent="space-between" />
+                    <Box 
+                       flexDirection="row" 
+                       justifyContent="space-between"
+                       alignItems="center" 
+                       marginVertical="s" 
+                    />
                         <Checkbox 
                         label="Beni Hatırla" 
                         checked={values.remember} 
                         onChange={() => setFieldValue("remember", !values.remember)}/>
-                        <Button variant="transparent" onPress={() => navigation.navigate("ForgotPassword")}>
-                            <Text color="primary">Şifreni unuttun mu?</Text>
-                        </Button>
+                        <BorderlessButton
+                        onPress={() => navigation.navigate("ForgotPassword")}
+                        >
+                            <Text variant="button" color="primary">Şifreni unuttun mu?</Text>
+                        </BorderlessButton>
                     </Box>
                     <Box alignItems="center" marginTop="m">
                     <Button 

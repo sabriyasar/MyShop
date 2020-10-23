@@ -1,5 +1,4 @@
 import React from "react";
-import { Feather as Icon } from "@expo/vector-icons";
 import { Routes, StackNavigationProps } from "../components/Navigation";
 import { Box, Button, Container, Text, RoundedIconButton, RoundedIcon } from "../components";
 
@@ -20,7 +19,7 @@ const PasswordChanged = ({ navigation, }: StackNavigationProps<Routes, "Password
         </Box>
          }
     >       
-            <Box flex={1} justifyContent="center" alignItems="center">
+            <Box flex={1} justifyContent="center" alignItems="center" padding="xl" >
                 <RoundedIcon 
                 name="check" 
                 size={SIZE} 
@@ -28,7 +27,7 @@ const PasswordChanged = ({ navigation, }: StackNavigationProps<Routes, "Password
                 color="primary" 
                 />
             
-                <Text variant="title1" textAlign="center" marginBottom="l">
+                <Text variant="title1" textAlign="center" marginVertical="l">
                 Şifren başarılı şekilde değiştirildi.
                 </Text>
                 <Text variant="body" textAlign="center" marginBottom="l">
