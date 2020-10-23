@@ -2,9 +2,10 @@ import React, { useRef } from "react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+import { TextInput as RNTextInput } from "react-native";
 
 import { Box, Button, Container, Text } from "../components";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import { AuthenticationRoutes, StackNavigationProps } from "../components/Navigation";
 
 import TextInput from "../components/Form/TextInput";
 import Footer from "./components/Footer";
@@ -21,7 +22,7 @@ const SignUpSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Required'),
   });
 
-const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
+const SignUp = ({ navigation }: StackNavigationProps<AuthenticationRoutes, "SignUp">) => {
 
     const {
         handleChange, handleBlur, handleSubmit, errors, touched } = useFormik({                  
@@ -36,8 +37,8 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
     }
     );
 
-    const password = useRef<typeof TextInput>(null);
-    const passwordConfirmation = useRef<typeof TextInput>(null);
+    const password = useRef<RNTextInput>(null);
+    const passwordConfirmation = useRef<RNTextInput>(null);
     const footer = ( 
         <Footer
         title="Zaten bir hesabın var mı?" 

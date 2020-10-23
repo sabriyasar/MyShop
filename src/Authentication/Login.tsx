@@ -1,15 +1,19 @@
 import React, { useRef } from "react";
+import { TextInput as RNTextInput } from "react-native";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
+import { BorderlessButton } from "react-native-gesture-handler";
+import { CompositeNavigationProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 import { Box, Button, Container, Text } from "../components";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import { AuthenticationRoutes, HomeRoutes } from "../components/Navigation";
 
 import TextInput from "../components/Form/TextInput";
 import Checkbox from "../components/Form/Checkbox";
 import Footer from "./components/Footer";
-import { BorderlessButton } from "react-native-gesture-handler";
+
 
 
 const LoginSchema = Yup.object().shape({
@@ -19,18 +23,24 @@ const LoginSchema = Yup.object().shape({
       .required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
   });
+  
+interface LoginProps {
+    navigation: CompositeNavigationProp<
+    StackNavigationProp<AuthenticationRoutes, 'Login'>,
+    DrawerNavigationProp<HomeRoutes, 'MyFlow'>
+  >;
+}
 
-const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
-
+const Login = ({ navigation }: LoginProps) => {
     const {
         handleChange, handleBlur, handleSubmit, errors, touched, values, setFieldValue
     } = useFormik({                  
         validationSchema: LoginSchema,
         initialValues: { email: '', password: "", remember: true },
-        onSubmit: navigation.navigate("Home"),
+        onSubmit: () => navigation.navigate("MyFlow"),
     });
 
-    const password = useRef<typeof TextInput>(null);
+    const password = useRef<RNTextInput>(null);
     const footer = ( 
         <Footer
         title="Bir hesabın yok mu?" 
