@@ -8,7 +8,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 import { Box, Button, Container, Text } from "../components";
-import { AuthenticationRoutes, HomeRoutes } from "../components/Navigation";
+import { AppRoutes, AuthenticationRoutes, AuthNavigationProps } from "../components/Navigation";
 
 import TextInput from "../components/Form/TextInput";
 import Checkbox from "../components/Form/Checkbox";
@@ -24,20 +24,14 @@ const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Required'),
   });
   
-interface LoginProps {
-    navigation: CompositeNavigationProp<
-    StackNavigationProp<AuthenticationRoutes, 'Login'>,
-    DrawerNavigationProp<HomeRoutes, 'MyFlow'>
-  >;
-}
 
-const Login = ({ navigation }: LoginProps) => {
+const Login = ({ navigation }: AuthNavigationProps<"Login">) => {
     const {
         handleChange, handleBlur, handleSubmit, errors, touched, values, setFieldValue
     } = useFormik({                  
         validationSchema: LoginSchema,
         initialValues: { email: '', password: "", remember: true },
-        onSubmit: () => navigation.navigate("MyFlow"),
+        onSubmit: () => navigation.navigate("Home"),
     });
 
     const password = useRef<RNTextInput>(null);
@@ -51,7 +45,6 @@ const Login = ({ navigation }: LoginProps) => {
 
     return (
         <Container pattern={0} {...{footer}}>
-            <Box padding="xl">
             <Text variant="title1" textAlign="center" marginBottom="l">
                 Tekrar Hoş Geldiniz
                 </Text>
@@ -73,7 +66,6 @@ const Login = ({ navigation }: LoginProps) => {
                     returnKeyLabel="next"
                     onSubmitEditing={() => password.current?.focus()}
                     />
-                   
                     <TextInput 
                     ref={password}
                     icon="lock" 
@@ -102,7 +94,9 @@ const Login = ({ navigation }: LoginProps) => {
                         <BorderlessButton
                         onPress={() => navigation.navigate("ForgotPassword")}
                         >
-                            <Text variant="button" color="primary">Şifreni unuttun mu?</Text>
+                            <Text variant="button" color="primary">
+                                Şifreni unuttun mu?
+                                </Text>
                         </BorderlessButton>
                     </Box>
                     <Box alignItems="center" marginTop="m">
@@ -113,7 +107,6 @@ const Login = ({ navigation }: LoginProps) => {
                     />
                             </Box>
                         </Box>
-                 </Box>
            </Container>
         );
 };

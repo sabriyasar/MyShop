@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { TextInput as RNTextInput } from "react-native";
 
 import { Box, Button, Container, Text } from "../components";
-import { AuthenticationRoutes, StackNavigationProps } from "../components/Navigation";
+import { AuthNavigationProps } from "../components/Navigation";
 
 import TextInput from "../components/Form/TextInput";
 import Footer from "./components/Footer";
@@ -22,7 +22,7 @@ const SignUpSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Required'),
   });
 
-const SignUp = ({ navigation }: StackNavigationProps<AuthenticationRoutes, "SignUp">) => {
+const SignUp = ({ navigation }: AuthNavigationProps<"SignUp">) => {
 
     const {
         handleChange, handleBlur, handleSubmit, errors, touched } = useFormik({                  
@@ -49,7 +49,6 @@ const SignUp = ({ navigation }: StackNavigationProps<AuthenticationRoutes, "Sign
 
     return (
         <Container pattern={1} {...{footer}}>
-            <Box padding="xl">
             <Text variant="title1" textAlign="center" marginBottom="l">
                 Hesap Oluştur
                 </Text>
@@ -115,7 +114,6 @@ const SignUp = ({ navigation }: StackNavigationProps<AuthenticationRoutes, "Sign
                     />
                             </Box>
                         </Box>
-                 </Box>
            </Container>
         );
 };

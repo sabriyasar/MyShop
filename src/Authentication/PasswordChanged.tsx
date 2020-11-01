@@ -18,15 +18,15 @@ const PasswordChanged = ({ navigation, }: StackNavigationProps<AuthenticationRou
         />
         </Box>
          }
-    >       
-            <Box flex={1} justifyContent="center" alignItems="center" padding="xl" >
+    >          
+     <Box alignSelf="center">
                 <RoundedIcon 
                 name="check" 
                 size={SIZE} 
                 backgroundColor="primaryLight" 
                 color="primary" 
                 />
-            
+                </Box>
                 <Text variant="title1" textAlign="center" marginVertical="l">
                 Şifren başarılı şekilde değiştirildi.
                 </Text>
@@ -39,7 +39,7 @@ const PasswordChanged = ({ navigation, }: StackNavigationProps<AuthenticationRou
                       onPress={() => navigation.navigate("Login")} 
                       label="Şifreni sıfırla" 
                     />
-                            </Box></Box>
+                            </Box>
         </Container>
     );
 };
