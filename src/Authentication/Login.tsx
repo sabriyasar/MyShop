@@ -3,17 +3,14 @@ import { TextInput as RNTextInput } from "react-native";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { BorderlessButton } from "react-native-gesture-handler";
-import { CompositeNavigationProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { DrawerNavigationProp } from "@react-navigation/drawer";
-
 import { Box, Button, Container, Text } from "../components";
-import { AppRoutes, AuthenticationRoutes, AuthNavigationProps } from "../components/Navigation";
-
+import { AuthenticationRoutes, HomeRoutes } from "../components/Navigation";
 import TextInput from "../components/Form/TextInput";
 import Checkbox from "../components/Form/Checkbox";
 import Footer from "./components/Footer";
-
+import { CompositeNavigationProp } from "@react-navigation/native";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 
 const LoginSchema = Yup.object().shape({
@@ -24,14 +21,20 @@ const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Required'),
   });
   
+  interface LoginProps {
+      navigation: CompositeNavigationProp<
+      StackNavigationProp<AuthenticationRoutes, "Login">,
+      DrawerNavigationProp<HomeRoutes, "MyFlow">
+      >;
+  }
 
-const Login = ({ navigation }: AuthNavigationProps<"Login">) => {
+const Login = ({ navigation }: LoginProps) => {
     const {
         handleChange, handleBlur, handleSubmit, errors, touched, values, setFieldValue
     } = useFormik({                  
         validationSchema: LoginSchema,
         initialValues: { email: '', password: "", remember: true },
-        onSubmit: () => navigation.navigate("Home"),
+        onSubmit: () => navigation.navigate("MyFlow"),
     });
 
     const password = useRef<RNTextInput>(null);
@@ -45,6 +48,7 @@ const Login = ({ navigation }: AuthNavigationProps<"Login">) => {
 
     return (
         <Container pattern={0} {...{footer}}>
+            <Box padding="xl">
             <Text variant="title1" textAlign="center" marginBottom="l">
                 Tekrar Hoş Geldiniz
                 </Text>
@@ -106,6 +110,7 @@ const Login = ({ navigation }: AuthNavigationProps<"Login">) => {
                       label="Hesabınıza giriş yapın" 
                     />
                             </Box>
+                        </Box>
                         </Box>
            </Container>
         );

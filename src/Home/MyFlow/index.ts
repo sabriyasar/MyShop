@@ -1,1 +1,1 @@
-export { default } from "../MyFlow/MyFlow";
+export { default } from "./MyFlow";

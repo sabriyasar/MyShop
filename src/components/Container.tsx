@@ -46,7 +46,8 @@ const Container = ({ children, footer, pattern }: ContainerProps) => {
             </Box>
             </Box>
             <Box flex={1} overflow="hidden">
-            <Image source={asset} 
+            <Image 
+            source={asset} 
             style={{ 
                    ...StyleSheet.absoluteFillObject,
                    width,
@@ -59,8 +60,6 @@ const Container = ({ children, footer, pattern }: ContainerProps) => {
                    borderTopLeftRadius={0} 
                    backgroundColor="white"
                    flex={1}
-                   justifyContent="center"
-                   padding="xl"
                    >
                        {children}
                        </Box>                    

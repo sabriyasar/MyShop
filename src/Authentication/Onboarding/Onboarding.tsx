@@ -93,9 +93,7 @@ const slides = [
 
 export const assets = slides.map((slide) => slide.picture.src);
 
-const Onboarding = ({ 
-    navigation, 
-}: AuthNavigationProps<"Onboarding"> ) => {
+const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding"> ) => {
     const styles = useStyles();
     const theme = useTheme();
     const scroll = useRef <Animated.ScrollView>(null);
