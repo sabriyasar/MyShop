@@ -34,7 +34,7 @@ const Login = ({ navigation }: LoginProps) => {
     } = useFormik({                  
         validationSchema: LoginSchema,
         initialValues: { email: '', password: "", remember: true },
-        onSubmit: () => navigation.navigate("MyFlow"),
+        onSubmit: () => navigation.navigate("Home"),
     });
 
     const password = useRef<RNTextInput>(null);
