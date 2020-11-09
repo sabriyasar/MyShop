@@ -7,7 +7,6 @@ import Login from "./Login";
 import SignUp from "./SignUp";  
 import ForgotPassword from "./ForgotPassword";  
 import PasswordChanged from "./PasswordChanged";  
-
 import { AuthenticationRoutes } from "../components/Navigation";
 
 export const assets = [...onBoardingAssets, ...WelcomeAssets];

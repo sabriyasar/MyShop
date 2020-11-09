@@ -10,6 +10,7 @@ import {
 } from './src/Authentication';
 import { LoadAssets } from './src/components';
 import { theme } from "./src/components/Theme";
+import { AppRoutes } from './src/components/Navigation';
 
 
 const assets = [...authenticationAssets];

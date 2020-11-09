@@ -48,6 +48,7 @@ const Login = ({ navigation }: LoginProps) => {
 
     return (
         <Container pattern={0} {...{footer}}>
+            <Box>
             <Box padding="xl">
             <Text variant="title1" textAlign="center" marginBottom="l">
                 Tekrar Hoş Geldiniz
@@ -55,7 +56,6 @@ const Login = ({ navigation }: LoginProps) => {
                 <Text variant="body" textAlign="center" marginBottom="l">
                     Aşağıdaki bilgileri kullanın ve hesabınıza giriş yapın
                     </Text>
-           <Box>
                <Box marginBottom="m">
                     <TextInput 
                     icon="mail" 
@@ -70,6 +70,7 @@ const Login = ({ navigation }: LoginProps) => {
                     returnKeyLabel="next"
                     onSubmitEditing={() => password.current?.focus()}
                     />
+                    </Box>
                     <TextInput 
                     ref={password}
                     icon="lock" 
@@ -90,11 +91,12 @@ const Login = ({ navigation }: LoginProps) => {
                        justifyContent="space-between"
                        alignItems="center" 
                        marginVertical="s" 
-                    />
+                    >
                         <Checkbox 
                         label="Beni Hatırla" 
                         checked={values.remember} 
-                        onChange={() => setFieldValue("remember", !values.remember)}/>
+                        onChange={() => setFieldValue("remember", !values.remember)}
+                        />
                         <BorderlessButton
                         onPress={() => navigation.navigate("ForgotPassword")}
                         >
@@ -102,6 +104,7 @@ const Login = ({ navigation }: LoginProps) => {
                                 Şifreni unuttun mu?
                                 </Text>
                         </BorderlessButton>
+                        </Box>
                     </Box>
                     <Box alignItems="center" marginTop="m">
                     <Button 
@@ -110,7 +113,6 @@ const Login = ({ navigation }: LoginProps) => {
                       label="Hesabınıza giriş yapın" 
                     />
                             </Box>
-                        </Box>
                         </Box>
            </Container>
         );
