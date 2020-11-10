@@ -21,8 +21,12 @@ const fonts = {
   "SFProDisplay-Medium": require("./assets/fonts/SF-Pro-Display-Medium.otf"),
 };
 
+type AppStackRoutes = {
+  Authentication: undefined;
+  Home: undefined;
+};
 
-const AppStack = createStackNavigator<AppRoutes>();
+const AppStack = createStackNavigator<AppStackRoutes>();
 
 export default function App() {
   return (
@@ -34,7 +38,10 @@ export default function App() {
     name="Authentication" 
     component={AuthenticationNavigator} 
     />
-    <AppStack.Screen name="Home" component={HomeNavigator} />
+    <AppStack.Screen 
+    name="Home" 
+    component={HomeNavigator} 
+    />
   </AppStack.Navigator>
   </SafeAreaProvider>
     </LoadAssets>
