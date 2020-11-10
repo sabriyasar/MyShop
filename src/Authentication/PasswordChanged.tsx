@@ -19,7 +19,7 @@ const PasswordChanged = ({ navigation, }: StackNavigationProps<AuthenticationRou
         </Box>
          }
     >          
-     <Box alignSelf="center">
+     <Box alignSelf="center" padding="xl" marginTop="l">
                 <RoundedIcon 
                 name="check" 
                 size={SIZE} 
@@ -27,7 +27,7 @@ const PasswordChanged = ({ navigation, }: StackNavigationProps<AuthenticationRou
                 color="primary" 
                 />
                 </Box>
-                <Text variant="title1" textAlign="center" marginVertical="l">
+                <Text variant="title1" textAlign="center" marginVertical="xl">
                 Şifren başarılı şekilde değiştirildi.
                 </Text>
                 <Text variant="body" textAlign="center" marginBottom="l">
@@ -37,7 +37,7 @@ const PasswordChanged = ({ navigation, }: StackNavigationProps<AuthenticationRou
                     <Button
                       variant="primary" 
                       onPress={() => navigation.navigate("Login")} 
-                      label="Şifreni sıfırla" 
+                      label="Giriş Yap" 
                     />
                             </Box>
         </Container>

@@ -90,7 +90,7 @@ const Login = ({ navigation }: LoginProps) => {
                        flexDirection="row" 
                        justifyContent="space-between"
                        alignItems="center" 
-                       marginVertical="s" 
+                       marginVertical="m" 
                     >
                         <Checkbox 
                         label="Beni Hatırla" 
@@ -106,7 +106,7 @@ const Login = ({ navigation }: LoginProps) => {
                         </BorderlessButton>
                         </Box>
                     </Box>
-                    <Box alignItems="center" marginTop="m">
+                    <Box alignItems="center" marginTop="s">
                     <Button 
                       variant="primary" 
                       onPress={handleSubmit} 

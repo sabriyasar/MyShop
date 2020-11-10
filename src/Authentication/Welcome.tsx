@@ -68,7 +68,7 @@ const Welcome = ({ navigation }: StackNavigationProps<AuthenticationRoutes, "Wel
                 <BorderlessButton 
                 onPress={() => navigation.navigate("ForgotPassword")}
                 > 
-                <Text variant="button" color="secondary">"Şifreni mi unuttun?" </Text>
+                <Text variant="button" color="secondary">"Şifreni unuttun mu?" </Text>
                 </BorderlessButton>
                 
                </Box>

@@ -33,7 +33,7 @@ const ForgotPassword = ({ navigation, }: StackNavigationProps<AuthenticationRout
                 <Box padding="xl">
 
             <Text variant="title1" textAlign="center" marginBottom="l">
-                Şifreni mi unuttun?
+                Şifreni unuttun mu?
                 </Text>
                 <Text variant="body" textAlign="center" marginBottom="l">
                 Hesabınızla ilişkili e-posta adresini girin
