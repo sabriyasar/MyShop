@@ -12,7 +12,6 @@ import { LoadAssets } from './src/components';
 import { theme } from "./src/components/Theme";
 import { AppRoutes } from './src/components/Navigation';
 
-
 const assets = [...authenticationAssets];
 const fonts = {
   "SFProDisplay-Bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
@@ -21,12 +20,8 @@ const fonts = {
   "SFProDisplay-Medium": require("./assets/fonts/SF-Pro-Display-Medium.otf"),
 };
 
-type AppStackRoutes = {
-  Authentication: undefined;
-  Home: undefined;
-};
 
-const AppStack = createStackNavigator<AppStackRoutes>();
+const AppStack = createStackNavigator<AppRoutes>();
 
 export default function App() {
   return (

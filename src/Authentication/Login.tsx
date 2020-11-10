@@ -4,21 +4,22 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { BorderlessButton } from "react-native-gesture-handler";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { CompositeNavigationProp } from "@react-navigation/native";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
+
 import { Box, Button, Container, Text } from "../components";
 import { AuthenticationRoutes, HomeRoutes } from "../components/Navigation";
 import TextInput from "../components/Form/TextInput";
 import Checkbox from "../components/Form/Checkbox";
-import Footer from "./components/Footer";
-import { CompositeNavigationProp } from "@react-navigation/native";
-import { DrawerNavigationProp } from "@react-navigation/drawer";
 
+import Footer from "./components/Footer";
 
 const LoginSchema = Yup.object().shape({
     password: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    email: Yup.string().email("Invalid email").required("Required"),
   });
   
   interface LoginProps {
@@ -33,7 +34,7 @@ const Login = ({ navigation }: LoginProps) => {
         handleChange, handleBlur, handleSubmit, errors, touched, values, setFieldValue
     } = useFormik({                  
         validationSchema: LoginSchema,
-        initialValues: { email: '', password: "", remember: true },
+        initialValues: { email: "", password: "", remember: true },
         onSubmit: () => navigation.navigate("Home"),
     });
 
