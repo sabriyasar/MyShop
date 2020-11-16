@@ -29,17 +29,14 @@ export default function App() {
     <LoadAssets {...{ fonts, assets }}>
       <SafeAreaProvider>
       <AppStack.Navigator headerMode="none">
-    <AppStack.Screen 
-    name="Authentication" 
-    component={AuthenticationNavigator} 
+         <AppStack.Screen 
+           name="Authentication" 
+             component={AuthenticationNavigator} 
     />
-    <AppStack.Screen 
-    name="Home" 
-    component={HomeNavigator} 
-    />
-  </AppStack.Navigator>
-  </SafeAreaProvider>
-    </LoadAssets>
+    <AppStack.Screen name="Home" component={HomeNavigator} />
+        </AppStack.Navigator>
+       </SafeAreaProvider>
+     </LoadAssets>
     </ThemeProvider>
   );
 }
