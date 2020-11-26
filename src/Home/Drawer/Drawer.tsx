@@ -1,9 +1,15 @@
+import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Dimensions, Image, StyleSheet } from "react-native";
-import { Box, RoundedIconButton, Text } from "../../components";
+import { Box, Header, Text } from "../../components";
+import { HomeRoutes } from "../../components/Navigation";
+import { theme, useTheme } from "../../components/Theme";
 
 import DrawerItem, { DrawerItemProps } from "./DrawerItem";
 
+
+export const assets = [require("./assets/drawer.jpg")];
 const { width } = Dimensions.get("window");
 export const DRAWER_WIDTH = width * 0.8;
 const aspectRatio = 750 / 1125;
@@ -16,9 +22,9 @@ const items: DrawerItemProps[] = [
         color: "primary",
     },
     {
-        icon: "user",
+        icon: "star",
         label: "Favorilerim",
-        screen: "FavoritesOutfits",
+        screen: "MyFavorites",
         color: "orange",
     },
     {
@@ -36,7 +42,7 @@ const items: DrawerItemProps[] = [
     {
         icon: "settings",
         label: "Bildirim Ayarları",
-        screen: "NotificationSettings",
+        screen: "Settings",
         color: "violet",
     },
     {
@@ -48,6 +54,10 @@ const items: DrawerItemProps[] = [
 ];
 
 const Drawer = () => {
+    const navigation = useNavigation<
+        DrawerNavigationProp<HomeRoutes, "MyFlow">
+        >();
+    const theme = useTheme();
     return (
         <Box flex={1}>
             <Box flex={0.2} backgroundColor="white">
@@ -59,26 +69,13 @@ const Drawer = () => {
                 bottom={0} 
                 borderBottomRightRadius="xl" 
                 backgroundColor="secondary"
-                flexDirection="row"
-                justifyContent="space-between"
-                paddingHorizontal="m"
-                style={{ paddingTop: 50 }}
                 >
-                    <RoundedIconButton 
-                        size={24}
-                        name="x"
-                        color="white"
-                        backgroundColor="secondary"
-                        onPress={() => true}
-                    />
-                    <Text color="white">PROFİL</Text>
-
-                    <RoundedIconButton 
-                        size={24}
-                        name="shopping-bag"
-                        color="white"
-                        backgroundColor="secondary"
-                        onPress={() => true}
+                    <Header 
+                    title="Menu" 
+                    left={{ 
+                        icon: "x", onPress: () => true }}
+                    right={{ icon: "shopping-bag", onPress: () => true }}
+                    dark
                     />
                 </Box>
             </Box>
@@ -122,11 +119,12 @@ const Drawer = () => {
             height={height * 0.61}
             >
                 <Image
-                source={require("../../components/assets/patterns/4.jpg")}
+                source={assets[0]}
                 style={{
                     ...StyleSheet.absoluteFillObject,
-                    width: undefined,
-                    height: undefined,
+                    width: DRAWER_WIDTH,
+                    height,
+                    borderTopLeftRadius: theme.borderRadii.xl,
                 }}
                 />
             </Box>
