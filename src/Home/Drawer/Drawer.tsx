@@ -57,7 +57,6 @@ const Drawer = () => {
     const navigation = useNavigation<
         DrawerNavigationProp<HomeRoutes, "MyFlow">
         >();
-    const theme = useTheme();
     return (
         <Box flex={1}>
             <Box flex={0.2} backgroundColor="white">
